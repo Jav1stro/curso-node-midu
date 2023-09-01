@@ -9,4 +9,4 @@ console.log('current working directory', process.cwd())
 
 
 // tengo que escribir JAVITO = asd en la consola antes de node process/process.js
-console.log('variable de entorno:', process.env.JAVITOA)
+console.log('variable de entorno:', process.env.JAVITO)
