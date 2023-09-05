@@ -9,30 +9,31 @@ app.use("/pokemon/*", (req, res, next) => {
 });
 
 
+app.use(express.json()) // esto reemplaza el código de abajo
 // Middleware para cambiar el req.body de UN POST
-app.use((req,res,next)=>{
-    if(req.method !== 'POST')return next()
-    if(req.headers['content-type'] !== 'application/json') return next()
+// app.use((req,res,next)=>{
+//     if(req.method !== 'POST')return next()
+//     if(req.headers['content-type'] !== 'application/json') return next()
 
-    // Entonces, a este middleware sólo llegan request que son POST y que tienen el header Content-Type: 'application/json'
-    let body = "";
+//     // Entonces, a este middleware sólo llegan request que son POST y que tienen el header Content-Type: 'application/json'
+//     let body = "";
 
-  req.on("data", (chunk) => {
-    body += chunk.toString();
-  });
+//   req.on("data", (chunk) => {
+//     body += chunk.toString();
+//   });
 
-  req.on("end", () => {
-    const data = JSON.parse(body);
+//   req.on("end", () => {
+//     const data = JSON.parse(body);
 
-    data.timestamp = Date.now();
+//     data.timestamp = Date.now();
 
-    data.author = "Javi";
-    data.name ='Pedro'
-    req.body = data
-    next()
-  });
+//     data.author = "Javi";
+//     data.name ='Pedro'
+//     req.body = data
+//     next()
+//   });
 
-})
+// })
 
 const ditto = require("./pokemon/ditto.json");
 app.get("/pokemon/ditto", (req, res) => {
